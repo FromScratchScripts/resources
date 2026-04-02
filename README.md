@@ -2,10 +2,6 @@
 
 # FromScratch
 
-**Bot smarter, not harder.**
-
----
-
 ```
   ______                    _____                 _       _     
  |  ____|                  / ____|               | |     | |    
@@ -15,31 +11,36 @@
  |_|  |_|  \___/|_| |_| |_|_____/ \___|_|  \__,_|\__\___|_| |_|
 ```
 
+**Bot smarter, not harder.**
+
 </div>
 
-## What's here?
+---
 
-This repo hosts shared runtime resources used by **FromScratch** scripts on the [DreamBot SDN](https://dreambot.org).
+Hey, I'm the dev behind FromScratch. I build scripts for the [DreamBot SDN](https://sdn.dreambot.org/scripts) that focus on doing things right — clean movement, smart progression, and not cutting corners on the stuff that matters.
 
-| File | Purpose |
-|------|---------|
-| `mousedata.json` | Pre-recorded human mouse movement dataset for the SmartMouse algorithm |
+## What's in this repo
+
+Shared resources that my scripts download at runtime.
+
+| File | What it does |
+|------|-------------|
+| `mousedata.json` | Mouse movement dataset for the SmartMouse algorithm |
+| `media/` | Icons and banners |
 
 ## SmartMouse
 
-Our scripts use a custom mouse algorithm trained on real human input data — not random bezier curves, not simple wind physics. Thousands of recorded movements across every distance and direction, replayed with natural variance.
+I got tired of scripts that move the mouse like a robot. SmartMouse replays real recorded human mouse movements instead of generating them with math. Every path in the dataset came from actual hand movements, captured with per-step timing.
 
 **How it works:**
-- On first script launch, `mousedata.json` is downloaded and cached locally
-- Subsequent runs load instantly from disk
-- Each movement picks a real recorded path matching the distance + direction, then applies subtle per-step timing variance
-- Falls back to a randomized physics model if the download fails
-
-No two mouse paths are ever identical. Because yours aren't either.
+- First time you run a script, it downloads `mousedata.json` and caches it locally
+- Every mouse movement picks a real recorded path that matches the distance and direction
+- V2 paths replay the exact timing from the recording, V1 paths use easing as a fallback
+- No two movements are identical
 
 ## Scripts
 
-Find our scripts on the [DreamBot SDN](https://sdn.dreambot.org/scripts) — search for **FromScratch**.
+Find my scripts on the [DreamBot SDN](https://sdn.dreambot.org/scripts) — search **FromScratch**.
 
 ---
 
